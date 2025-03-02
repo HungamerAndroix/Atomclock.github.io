@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atomclock</title>
+    <style>
+        body {
+            font-family: 'Segoe UI Variable Display', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #191616;
+            flex-direction: column; /* Alapértelmezett irány függőlegesen */
+            text-align: center;
+        }
+        .beta-mode {
+            font-size: 2em;
+            color: #ff0000;
+            font-weight: bold;
+            padding: 10px;
+            background-color: #000000;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+        }
+        .clock {
+            font-size: 8em;
+            color: #fcff00;
+            background-color: #000000;
+            padding: 100px;
+            border: 25px solid #00ff18;
+            border-radius: 100px;
+            box-shadow: 0 0 50px rgba(0, 255, 0, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <div class="beta-mode">Testing Mode: On (You can't turn it off)</div>
+    <div class="clock" id="clock"></div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            
+            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock(); // Inicializáljuk az óra első megjelenítését
+    </script>
+</body>
+</html>
